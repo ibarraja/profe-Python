@@ -14,7 +14,10 @@ lista_infractores = []
 # 1º calular el porcentaje de conductores infractores
 for i in range (0, len(velocidades)):
     if velocidades[i] > VELOCIDAD_MAXIMA_PERMITIDA:
+        #Aquí calculamos el numero de infractores
         contador_infractores += 1
+        
+        #Aquí añadimos la velocidad de los infractores en la lista
         lista_infractores.append(velocidades[i])
 
 porcentaje_infractores = contador_infractores*100/len(velocidades)
