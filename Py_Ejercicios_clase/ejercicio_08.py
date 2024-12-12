@@ -1,7 +1,15 @@
 # Almacena la siguiente información sobre los álbumes más vendidos en los años 90 en una lista de diccionarios (menos mal que no existía el Reggaeton):
-# Recuerda que cada álbum es un diccionario
-# (Artista o grupo, álbum, unidades vendidas y país del artista)
-albumes= [
+# Recuerda que cada álbum es un array de diccionarios (year, artist o grupo, album, sold y country)
+
+# Muestra por consola:
+#   - El disco más vendido fue XXX del artista YYY que vendió ZZZ álbumes
+#   - El disco más vendido en Reino Unido fue XXX en el año YYY
+#   - El disco Estrella de mar vendió XXX álbumes en el año YYY
+#   - El disco no español más vendido fue XXX del artista YYY
+#   - El álbum en español más vendido en la segunda mitad de la década de los 90 fue XXX del artista YYY
+#   - Los álbumes más vendidos cada año de la década fueron:
+
+ALBUMES= [
     {"year":1993, "artist":"Gloria Estefan",        "album": "Mi tierra",               "sold":1000000, "country":"Cuba"},
     {"year":1993, "artist":"Laura Pausini",         "album": "Laura Pausini",           "sold":1350000, "country":"Italia"},
     {"year":1991, "artist":"Juan Luis",             "album": "Guerra Bachata Rosa",     "sold":700000,  "country":"República Dominicana"},
@@ -20,7 +28,7 @@ albumes= [
     {"year":1993, "artist":"Abba",                  "album": "ABBA Gold",               "sold":800000,  "country":"Suecia"},
     {"year":2001, "artist":"Álex Ubago",            "album": "¿Qué pides tú?",          "sold":900000,  "country":"España"},
     {"year":1988, "artist":"Mecano",                "album": "Descanso Dominical",      "sold":1100000, "country":"España"},
-    {"year":2002, "artist":"Amaral Estrella",       "album": "de mar",                  "sold":800000,  "country":"España"},
+    {"year":2002, "artist":"Amaral",                "album": "Estrella de mar",         "sold":800000,  "country":"España"},
     {"year":1991, "artist":"Alejandro Sanz",        "album": "Viviendo deprisa",        "sold":800000,  "country":"España"},
     {"year":1995, "artist":"Alejandro Sanz",        "album": "3",                       "sold":800000,  "country":"España"},
     {"year":1997, "artist":"Backstreet Boys",       "album": "Backstreet's Back",       "sold":800000,  "country":"Reino Unido"},
@@ -34,10 +42,55 @@ albumes= [
     {"year":2003, "artist":"Alejandro Sanz",        "album": "No es lo mismo",          "sold":800000,  "country":"España"},
     {"year":2004, "artist":"David Bisbal",          "album": "Bulería",                 "sold":1000000, "country":"España"}
 ]
-# Muestra por consola:
-#   - El disco más vendido fue XXX del artista YYY que vendió ZZZ álbumes
-#   - El disco más vendido en Reino Unido fue XXX en el año YYY
-#   - El disco Estrella de mar vendió XXX álbumes en el año YYY
-#   - El disco no español más vendido fue XXX del artista YYY
-#   - El álbum en español más vendido en la segunda mitad de la década de los 90 fue XXX del artista YYY
-#   - Los álbumes más vendidos cada año de la década fueron:
+
+# -----------------------------------------------------------------------------------------------------------------
+
+def encontrar_disco_mas_vendido(albums):
+    diccionario_mas_vendido={}
+    num_ventas_mas_alta=0
+    for album in albums:
+        if(album['sold']>num_ventas_mas_alta):
+            num_ventas_mas_alta=album['sold']
+            diccionario_mas_vendido = album
+    
+    return diccionario_mas_vendido
+
+def encontrar_disco_mas_vendido_UK(albums):
+    diccionario_mas_vendido={}
+    num_ventas_mas_alta=0
+    for album in albums:
+        if(album['sold']>num_ventas_mas_alta and album['country']=='Reino Unido'):
+            num_ventas_mas_alta=album['sold']
+            diccionario_mas_vendido = album
+
+    return diccionario_mas_vendido
+
+def econtrar_disco_estrella_de_mar(albums):
+    estrella_de_mar={}
+    for album in albums:
+        if(album['album']=='Estrella de mar'):
+            estrella_de_mar = album
+
+    return estrella_de_mar
+
+# -----------------------------------------------------------------------------------------------------------------
+
+def imprimir_album_mas_vendido(alb):
+    print(f"El disco más vendido fue {alb['album']} del artista {alb['artist']} que vendió {alb['sold']} álbumes")
+
+def imprimir_album_mas_vendido_UK(alb):
+    print(f"El disco más vendido en Reino Unido fue {alb['album']} en el año {alb['year']}")
+
+def imprimir_estrella_de_mar(alb):
+    print(f"El disco Estrella de mar vendió {alb['sold']} álbumes en el año {alb['year']}")
+
+# -----------------------------------------------------------------------------------------------------------------
+
+if __name__ == '__main__':
+    album = encontrar_disco_mas_vendido(ALBUMES)
+    albumUK = encontrar_disco_mas_vendido_UK(ALBUMES)
+    estrella = econtrar_disco_estrella_de_mar(ALBUMES)
+
+    imprimir_album_mas_vendido(album)
+    imprimir_album_mas_vendido_UK(albumUK)
+    imprimir_estrella_de_mar(estrella)
