@@ -7,7 +7,7 @@
 #   - El disco Estrella de mar vendió XXX álbumes en el año YYY
 #   - El disco no español más vendido fue XXX del artista YYY
 #   - El álbum en español más vendido en la segunda mitad de la década de los 90 fue XXX del artista YYY
-#   - Los álbumes más vendidos cada año de la década fueron:
+#   - Los álbumes más vendidos cada año fueron:
 
 ALBUMES= [
     {"year":1993, "artist":"Gloria Estefan",        "album": "Mi tierra",               "sold":1000000, "country":"Cuba"},
@@ -73,6 +73,35 @@ def econtrar_disco_estrella_de_mar(albums):
 
     return estrella_de_mar
 
+def encontrar_disco_mas_vendido_notES(albums):
+    diccionario_mas_vendido={}
+    num_ventas_mas_alta=0
+    for album in albums:
+        if(album['sold'] > num_ventas_mas_alta and album['country'] != 'España'):
+            num_ventas_mas_alta=album['sold']
+            diccionario_mas_vendido = album
+
+    return diccionario_mas_vendido
+
+def encontrar_album_mas_vendido_2da_mitad_90s_ES(albums):
+    diccionario_mas_vendido={}
+    num_ventas_mas_alta=0
+    for album in albums:
+        if(album['sold'] > num_ventas_mas_alta and album['country'] == 'España' and 1999 >= album['year'] >= 1995):
+            num_ventas_mas_alta=album['sold']
+            diccionario_mas_vendido = album
+
+    return diccionario_mas_vendido
+
+def devolver_albumes_mas_vendidos_cada_anio(albums):
+    diccionario_devolver={}
+    for album in albums:
+        year=album['year']
+        if year not in diccionario_devolver or album['sold'] > diccionario_devolver[year]['sold']:
+            diccionario_devolver[year]=album
+    
+    return diccionario_devolver
+            
 # -----------------------------------------------------------------------------------------------------------------
 
 def imprimir_album_mas_vendido(alb):
@@ -84,13 +113,30 @@ def imprimir_album_mas_vendido_UK(alb):
 def imprimir_estrella_de_mar(alb):
     print(f"El disco Estrella de mar vendió {alb['sold']} álbumes en el año {alb['year']}")
 
+def imprimir_disco_mas_vendido_notES(alb):
+    print(f"El disco no español más vendido fue {alb['album']} del artista {alb['artist']}")
+
+def imprimir_disco_mas_vendido_2a_mitad_90s_ES(alb):
+    print(f"El álbum en español más vendido en la segunda mitad de la década de los 90 fue {alb['album']} del artista {alb['artist']}")
+
+def imprimir_album_mas_vendido_por_año(alb):
+    print(alb)
 # -----------------------------------------------------------------------------------------------------------------
 
 if __name__ == '__main__':
     album = encontrar_disco_mas_vendido(ALBUMES)
     albumUK = encontrar_disco_mas_vendido_UK(ALBUMES)
     estrella = econtrar_disco_estrella_de_mar(ALBUMES)
-
-    imprimir_album_mas_vendido(album)
-    imprimir_album_mas_vendido_UK(albumUK)
-    imprimir_estrella_de_mar(estrella)
+    albumNotES = encontrar_disco_mas_vendido_notES(ALBUMES)
+    albumES2daMitad90s = encontrar_album_mas_vendido_2da_mitad_90s_ES(ALBUMES)
+    album_pruebas = devolver_albumes_mas_vendidos_cada_anio(ALBUMES)
+    alb = devolver_albumes_mas_vendidos_cada_anio(ALBUMES)
+    
+    # imprimir_album_mas_vendido(album)
+    # imprimir_album_mas_vendido_UK(albumUK)
+    # imprimir_estrella_de_mar(estrella)
+    # imprimir_disco_mas_vendido_notES(albumNotES)
+    # imprimir_disco_mas_vendido_2a_mitad_90s_ES(albumES2daMitad90s)
+    imprimir_album_mas_vendido_por_año(alb)
+    
+    
