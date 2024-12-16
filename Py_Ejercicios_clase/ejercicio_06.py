@@ -1,3 +1,9 @@
+# En este ejercicio vamos a calcular la nota de un examen sobre 10 teniendo una lista de la ponderación de cada ejercicio.
+# Para calcularlo se pide que se desarrollen tres funciones: 
+#   1.función: pedir_datos (devuelve una tupla): tenemos que pedir tantas veces como ponderaciones encontremos en la Varible Global PESO_PREGUNTA la nota (int) sobre 100 de cada ejercicio.
+#   2.función: calcular_nota_ponderada (devuelve un número decimal): tenemos que calcular la suma de las notas que hemos recogido en la funcion pedir_datos y ponderarlas según la Variable Global. La nota la tendremos que poner sobre 10.
+#   3.función: mostrar_nota_examen (no devuelve nada): muestra con un print la nota que se ha calculado en la funcion calcular_nota_ponderada.
+
 PESO_PREGUNTA = (0.75, 0.75, 1 ,1 ,1.25 ,1.50 ,2 ,1.75)
 
 # ---------------------------------------
@@ -35,7 +41,8 @@ def mostrar_nota_examen(nota):
 #----------------------------------------
 
 if __name__ == '__main__':
-    calificaciones = pedir_datos(len(PESO_PREGUNTA))
-    nota = calcular_nota_ponderada(calificaciones, PESO_PREGUNTA)
-    mostrar_nota_examen(nota)
+    # calificaciones = pedir_datos(len(PESO_PREGUNTA))
+    # nota = calcular_nota_ponderada(calificaciones, PESO_PREGUNTA)
+    # mostrar_nota_examen(nota)
+    mostrar_nota_examen(calcular_nota_ponderada(pedir_datos(len(PESO_PREGUNTA)), PESO_PREGUNTA))
     
