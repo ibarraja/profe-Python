@@ -24,3 +24,4 @@
 # Comportamiento del programa:
 #   El programa debe continuar ejecutándose hasta que el usuario elija la opción 5 (Salir).
 #   Si ocurre un error, el programa debe mostrar un mensaje adecuado y permitir al usuario intentarlo de nuevo.
+
