@@ -79,7 +79,6 @@ print(mi_diccionario.items())
 # Actualizar un diccionario
 mi_diccionario.update({"curso": "DAW", "edad": 31})
 print(mi_diccionario)  # Salida: 
-
 ```
 
 ```makefile
