@@ -7,7 +7,7 @@ Tipos de claves: Las claves deben ser de un tipo inmutable, como cadenas, númer
 - Desordenados: A partir de Python 3.7, los diccionarios conservan el orden de inserción de los elementos, pero no tienen índices numéricos como las listas.
 
 ## 2. Crear un diccionario
-Puedes crear un diccionario usando llaves {} o con la función dict().
+Puedes crear un diccionario usando llaves `{}` o con la función `dict()`.
 
 ```python
 # Diccionario vacío
