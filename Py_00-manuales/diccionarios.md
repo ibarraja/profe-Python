@@ -88,20 +88,15 @@ dict_values(['Javier', True])
 dict_items([('nombre', 'Javier'), ('profesor', True)])
 {'nombre': 'Javier', 'profesor': True, 'curso': 'DAW', 'edad': 31}
 ```
-Recorrer un diccionario
-python
-Copiar código
+## 7. Recorrer un diccionario
+```python
 for clave, valor in mi_diccionario.items():
     print(f"{clave}: {valor}")
-# Salida:
-# nombre: Javier
-# profesor: True
-# curso: DAW
-# edad: 31
-Los diccionarios son esenciales en Python para estructurar y manejar datos de forma eficiente. ¿Quieres ejemplos avanzados o algún caso específico?
-
-
-
-
-
-
+```
+Salida:
+```makefile
+nombre: Javier
+profesor: True
+curso: DAW
+edad: 31
+```
