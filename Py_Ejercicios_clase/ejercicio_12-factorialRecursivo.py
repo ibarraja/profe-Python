@@ -6,9 +6,23 @@
 #      - 0! = 1
 
 def factorial(num):
-
+    factorial = 1
+    
+    if num == 0:
+        return 1
+    
+    for i in range(1,num+1):
+        factorial = factorial * i
+    
+    return factorial
 
 if __name__ == "__main__":
-
-    
+    try:
+        num = int(input("Dame un numero: "))
+        if num >= 0:
+            print(f'El factorial de {num} es {factorial(num)}')
+        else:
+            print("El enunciado pide introducir un numero enterno no negativo.")
+    except ValueError as e:
+        print(f"Error: {e}")
     
