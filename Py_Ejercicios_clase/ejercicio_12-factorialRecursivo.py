@@ -4,16 +4,9 @@
 #  -  Asegúrate de manejar correctamente el caso base para la recursión.
 
 def factorial(num):
-    inicializador = 1
-    factorial = 1
-    
-    for i in range(inicializador,num+1):
-        factorial = factorial * i
-    
-    return factorial
+
 
 if __name__ == "__main__":
-    num = int(input("Dame un numero: "))
-    print(f'El factorial de {num} es {factorial(num)}')
+
     
     
