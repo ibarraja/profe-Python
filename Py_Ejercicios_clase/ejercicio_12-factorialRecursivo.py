@@ -4,16 +4,22 @@
 #  -  Asegúrate de manejar correctamente el caso base para la recursión.
 
 def factorial(num):
-    inicializador = 1
     factorial = 1
     
-    for i in range(inicializador,num+1):
+    if num == 0:
+        return 1
+    
+    for i in range(1,num+1):
         factorial = factorial * i
     
     return factorial
 
 if __name__ == "__main__":
-    num = int(input("Dame un numero: "))
-    print(f'El factorial de {num} es {factorial(num)}')
-    
-    
+    try:
+        num = int(input("Dame un numero: "))
+        if num >= 0:
+            print(f'El factorial de {num} es {factorial(num)}')
+        else:
+            print("El enunciado pide introducir un numero enterno no negativo.")
+    except ValueError as e:
+        print(f"Error: {e}")
