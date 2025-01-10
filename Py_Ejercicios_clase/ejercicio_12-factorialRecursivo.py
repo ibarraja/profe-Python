@@ -3,6 +3,7 @@
 #  -  El programa debe pedir al usuario un número entero positivo y mostrar su factorial calculado mediante la función implementada.
 #  -  Un factorial, por ejemplo de 5, seria del siguiente modo:
 #      - 5! = 5*4*3*2*1
+#      - 0! = 1
 
 def factorial(num):
 
