@@ -3,4 +3,5 @@
 #  -  Ignora los espacios y convierte todas las letras a minúsculas para comparar correctamente.
 #  -  El programa debe pedir al usuario una palabra o frase e indicar si es un palíndromo utilizando la función implementada.
 #  -  Para transformar una cadena a minusculas: cadena.lower()
-#  -  Para solo agregar caracteres alfanuméricos: cadena.isalnum()
+#  -  Para comprobar si cadena tiene caracteres alfanúmericos o no: cadena.isalnum()
+#  -  Para quitar los espacios: cadena.replace(" ", "")
