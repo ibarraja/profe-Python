@@ -1,3 +1,5 @@
+# Crea un programa que reciba una lista de estudiantes con sus nombres y sus notas, calcule el promedio de cada estudiante, determine quién aprobó (promedio >= 5.0) y quién no, y devuelva el estudiante con la nota promedio más alta. Hay errores intencionales para depuración.
+
 # Función para calcular el promedio de un estudiante
 def calcular_promedio(notas):
     total = sum(notas)
