@@ -31,7 +31,7 @@ for estudiante in estudiantes:
     if promedio >= 5:
         estado = "Aprobado"
     else:
-        estado = "Reprobado"
+        estado = "Suspenso"
     print(f"{estudiante['nombre']} - Promedio: {promedio:.2f} - Estado: {estado}")
 
 # Encuentra el mejor estudiante
