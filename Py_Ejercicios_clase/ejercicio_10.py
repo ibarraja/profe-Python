@@ -138,6 +138,7 @@ def pedir_numeros():
             return numeros
         except:
             print("Error. Me tienes que dar dos números válidos")
+        
             
 def desplazar_consola(repeticiones):
     for i in range(repeticiones):
