@@ -129,11 +129,14 @@ print(resultado)  # 8
 ---
 
 ## Herencia y Reutilización
-La **herencia** permite que una clase (hija) herede atributos y métodos de otra clase (padre). Es útil para extender funcionalidades sin duplicar código.
 
-- **Simple:** Una clase hereda de otra.
-- **Múltiple:** Una clase hereda de varias clases.
+La **herencia** permite que una clase (*hija*) herede atributos y métodos de otra clase (*padre*). Es útil para extender funcionalidades sin duplicar código.
 
+### **Tipos de Herencia**
+- **Simple**: Una clase hereda de otra.
+- **Múltiple**: Una clase hereda de varias clases.
+
+#### **Ejemplo de Herencia Simple**
 ```python
 class Vehiculo:
     def __init__(self, marca):
@@ -144,10 +147,53 @@ class Coche(Vehiculo):
         return f"Coche de marca {self.marca}"
 
 coche = Coche("Toyota")
-print(coche.descripcion())
+print(coche.descripcion())  # Salida: Coche de marca Toyota
 ```
 
 ---
+
+## Clases Abstractas y Métodos Abstractos
+
+En Programación Orientada a Objetos (OOP), una **clase base abstracta** es una clase que no puede ser instanciada directamente y sirve como plantilla para otras clases. Un **método abstracto** es un método definido en una clase base abstracta que debe ser implementado por las clases hijas.
+
+Python proporciona el módulo `abc` (**Abstract Base Class**) para definir clases abstractas y métodos abstractos.
+
+### **Ejemplo con Clases Abstractas**
+```python
+from abc import ABC, abstractmethod
+import math
+
+class Figura(ABC):  # Clase base abstracta
+    @abstractmethod
+    def area(self):
+        """Método abstracto que deben implementar las clases derivadas."""
+        pass
+
+class Rectangulo(Figura):  # Clase derivada concreta
+    def __init__(self, ancho, alto):
+        self.ancho = ancho
+        self.alto = alto
+
+    def area(self):  # Implementación obligatoria
+        return self.ancho * self.alto
+
+class Circulo(Figura):  # Otra clase derivada concreta
+    def __init__(self, radio):
+        self.radio = radio
+
+    def area(self):  # Implementación obligatoria
+        return math.pi * self.radio ** 2
+
+# Prueba de instanciación y uso de polimorfismo
+figuras = [Rectangulo(3, 6), Circulo(4)]
+for figura in figuras:
+    print(f"Área: {figura.area():.2f}")
+```
+
+### **Explicación**
+1. Se define la clase abstracta `Figura`, que hereda de `ABC` y tiene un método abstracto `area()`.
+2. `Rectangulo` y `Circulo` heredan de `Figura` y deben implementar `area()`.
+3. Se crea una lista de figuras y se llama a `area()` sin importar el tipo específico de objeto, demostrando **polimorfismo**.
 
 ## Encapsulación y Accesibilidad
 La **encapsulación** controla cómo se accede y modifica la información de un objeto. Python utiliza convenciones simples:
