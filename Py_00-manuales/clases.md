@@ -142,7 +142,7 @@ Existen varios tipos de herencia en OOP:
 4. **Herencia Jerárquica**: Varias clases hijas heredan de una misma clase padre.
 5. **Herencia Híbrida**: Combinación de dos o más tipos de herencia anteriores.
 
-### **Ejemplo de Herencia Simple**
+#### **Ejemplo de Herencia Simple**
 ```python
 class Vehiculo:
     def __init__(self, marca):
@@ -163,7 +163,7 @@ coche = Coche("Toyota", "Corolla")
 print(coche.descripcion())  # Salida: Coche Corolla de marca Toyota
 ```
 
-### **Ejemplo de Herencia Múltiple**
+#### **Ejemplo de Herencia Múltiple**
 ```python
 class Motor:
     def tipo_motor(self):
@@ -181,7 +181,7 @@ auto = Automovil()
 print(auto.descripcion())  # Salida: Automóvil con Motor de combustión interna y Chasis monocasco
 ```
 
-### **Ejemplo de Herencia Multinivel**
+#### **Ejemplo de Herencia Multinivel**
 ```python
 class Animal:
     def sonido(self):
