@@ -269,39 +269,41 @@ Python proporciona el módulo `abc` (**Abstract Base Class**) para definir clase
 ### **Ejemplo con Clases Abstractas**
 ```python
 from abc import ABC, abstractmethod
-import math
 
-class Figura(ABC):  # Clase base abstracta
+class Dispositivo(ABC):  # Clase base abstracta
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+    
     @abstractmethod
-    def area(self):
+    def encender(self):
         """Método abstracto que deben implementar las clases derivadas."""
         pass
 
-class Rectangulo(Figura):  # Clase derivada concreta
-    def __init__(self, ancho, alto):
-        self.ancho = ancho
-        self.alto = alto
+class Telefono(Dispositivo):  # Clase derivada concreta
+    def encender(self):
+        return f"El teléfono {self.marca} {self.modelo} se está encendiendo."
 
-    def area(self):  # Implementación obligatoria
-        return self.ancho * self.alto
-
-class Circulo(Figura):  # Otra clase derivada concreta
-    def __init__(self, radio):
-        self.radio = radio
-
-    def area(self):  # Implementación obligatoria
-        return math.pi * self.radio ** 2
+class Portatil(Dispositivo):  # Otra clase derivada concreta
+    def encender(self):
+        return f"El portátil {self.marca} {self.modelo} está arrancando el sistema."
 
 # Prueba de instanciación y uso de polimorfismo
-figuras = [Rectangulo(3, 6), Circulo(4)]
-for figura in figuras:
-    print(f"Área: {figura.area():.2f}")
+dispositivos = [
+    Telefono("Samsung", "Galaxy S21"),
+    Portatil("Dell", "XPS 15")
+]
+
+for dispositivo in dispositivos:
+    print(dispositivo.encender())
 ```
 
 ### **Explicación**
-1. Se define la clase abstracta `Figura`, que hereda de `ABC` y tiene un método abstracto `area()`.
-2. `Rectangulo` y `Circulo` heredan de `Figura` y deben implementar `area()`.
-3. Se crea una lista de figuras y se llama a `area()` sin importar el tipo específico de objeto, demostrando **polimorfismo**.
+1. Se define la clase abstracta `Dispositivo`, que hereda de `ABC` y tiene un método abstracto `encender()`.
+2. `Telefono` y `Portatil` heredan de `Dispositivo` y deben implementar `encender()`.
+3. Se crea una lista de dispositivos y se llama a `encender()` sin importar el tipo específico de objeto, demostrando **polimorfismo**.
+
+Este enfoque es útil para representar dispositivos electrónicos que comparten una funcionalidad común, pero con comportamientos específicos según el tipo de dispositivo.
 
 ## Encapsulación y Accesibilidad
 La **encapsulación** controla cómo se accede y modifica la información de un objeto. Python utiliza convenciones simples:
@@ -323,13 +325,21 @@ class Datos:
 
 ---
 
-## Polimorfismo
-El polimorfismo permite usar métodos con el mismo nombre en diferentes clases. Esto fomenta la flexibilidad al interactuar con objetos de distintos tipos.
+## Polimorfismo en Programación Orientada a Objetos
+
+El **polimorfismo** es un concepto clave en la Programación Orientada a Objetos (OOP) que permite utilizar un mismo método en diferentes clases, asegurando que cada clase implemente su propia versión del método. Esto favorece la flexibilidad y la escalabilidad del código, permitiendo que se interactúe con objetos de distintos tipos de manera uniforme.
+
+### **Tipos de Polimorfismo**
+1. **Polimorfismo de Sobreescritura (Overriding)**: Ocurre cuando una subclase redefine un método de la superclase para adaptarlo a su propio comportamiento.
+2. **Polimorfismo de Sobrecarga (Overloading)**: Se da cuando múltiples métodos comparten el mismo nombre pero tienen diferentes parámetros (en Python, esto se simula con argumentos opcionales o `*args`).
+3. **Polimorfismo basado en interfaces**: Ocurre cuando diferentes clases implementan los mismos métodos sin necesidad de heredar de una clase base.
+
+### **Ejemplo de Polimorfismo por Sobreescritura**
 
 ```python
 class Animal:
     def sonido(self):
-        pass
+        raise NotImplementedError("Este método debe ser implementado en la subclase")
 
 class Perro(Animal):
     def sonido(self):
@@ -339,10 +349,52 @@ class Gato(Animal):
     def sonido(self):
         return "Maúlla"
 
-for animal in [Perro(), Gato()]:
+# Lista de objetos de diferentes tipos
+animales = [Perro(), Gato()]
+
+# Uso de polimorfismo: mismo método llamado en diferentes clases
+for animal in animales:
     print(animal.sonido())
 ```
 
+### **Ejemplo de Polimorfismo de Sobrecarga (Simulado en Python)**
+
+Python no admite sobrecarga de métodos en el sentido estricto como en otros lenguajes (Java, C++), pero se puede lograr usando valores predeterminados o `*args`.
+
+```python
+class Calculadora:
+    def suma(self, a, b, c=0):
+        return a + b + c  # El tercer parámetro es opcional
+
+calc = Calculadora()
+print(calc.suma(2, 3))      # Salida: 5
+print(calc.suma(2, 3, 4))   # Salida: 9
+```
+
+### **Ejemplo de Polimorfismo basado en Interfaces**
+
+Python permite que diferentes clases implementen métodos con el mismo nombre sin necesidad de una jerarquía de herencia, lo que fomenta un polimorfismo más flexible.
+
+```python
+class Pato:
+    def sonido(self):
+        return "Cua cua"
+
+class Persona:
+    def sonido(self):
+        return "Hola!"
+
+# Lista de objetos sin relación de herencia
+objetos = [Pato(), Persona()]
+
+for obj in objetos:
+    print(obj.sonido())  # Se ejecuta el método correspondiente a cada clase
+```
+
+### **Ventajas del Polimorfismo**
+- **Facilita la extensibilidad** del código, permitiendo agregar nuevas clases sin modificar el código existente.
+- **Fomenta la reutilización**, evitando duplicaciones innecesarias.
+- **Promueve la flexibilidad**, permitiendo que funciones y métodos trabajen con diferentes tipos de objetos sin preocuparse de su implementación específica.
 ---
 
 ## Buenas Prácticas
