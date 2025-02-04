@@ -305,24 +305,6 @@ for dispositivo in dispositivos:
 
 Este enfoque es útil para representar dispositivos electrónicos que comparten una funcionalidad común, pero con comportamientos específicos según el tipo de dispositivo.
 
-## Encapsulación y Accesibilidad
-La **encapsulación** controla cómo se accede y modifica la información de un objeto. Python utiliza convenciones simples:
-
-- Público: Sin guión bajo.
-- Protegido: Prefijo `_`.
-- Privado: Prefijo `__`.
-
-```python
-class Datos:
-    def __init__(self):
-        self.publico = "Accesible"
-        self._protegido = "Uso interno"
-        self.__privado = "Oculto"
-
-    def obtener_privado(self):
-        return self.__privado
-```
-
 ---
 
 ## Polimorfismo en Programación Orientada a Objetos
@@ -405,6 +387,84 @@ for obj in objetos:
 
 ---
 
-## Conclusión
-Las clases en Python son una herramienta esencial para organizar y estructurar código en proyectos complejos. Dominar conceptos como herencia, encapsulación y polimorfismo es clave para aprovechar al máximo las capacidades de la programación orientada a objetos. Este conocimiento será invaluable para desarrollar aplicaciones robustas y escalables.
+## Encapsulación y Accesibilidad
+
+La **encapsulación** es un principio fundamental de la Programación Orientada a Objetos (OOP) que controla cómo se accede y modifica la información de un objeto. Esto ayuda a mantener la integridad y seguridad de los datos dentro de una clase.
+
+### **Niveles de Accesibilidad en Python**
+Python utiliza convenciones de nombres para indicar diferentes niveles de accesibilidad:
+
+- **Público**: Se puede acceder desde cualquier parte del código. No tiene prefijo especial.
+- **Protegido**: Se indica con un guión bajo `_` y sugiere que solo debe usarse dentro de la clase o sus subclases.
+- **Privado**: Se indica con un doble guión bajo `__` y oculta el atributo o método, evitando su acceso directo fuera de la clase.
+
+### **Ejemplo de Encapsulación**
+```python
+class Datos:
+    def __init__(self):
+        self.publico = "Accesible"  # Atributo público
+        self._protegido = "Uso interno"  # Atributo protegido
+        self.__privado = "Oculto"  # Atributo privado
+
+    def obtener_privado(self):
+        return self.__privado  # Método para acceder a un atributo privado
+
+# Creación de un objeto de la clase Datos
+dato = Datos()
+print(dato.publico)  # Se puede acceder libremente
+print(dato._protegido)  # Se puede acceder, pero no es recomendable
+
+# Intento de acceso directo a un atributo privado (generará un error)
+# print(dato.__privado)  # AttributeError: 'Datos' object has no attribute '__privado'
+
+# Acceso correcto a un atributo privado mediante un método
+print(dato.obtener_privado())  # Salida: Oculto
+```
+
+### **Encapsulación en Métodos**
+Los métodos también pueden ser públicos, protegidos o privados.
+```python
+class Ejemplo:
+    def metodo_publico(self):
+        return "Método público"
+    
+    def _metodo_protegido(self):
+        return "Método protegido"
+    
+    def __metodo_privado(self):
+        return "Método privado"
+    
+    def llamar_metodo_privado(self):
+        return self.__metodo_privado()  # Acceder al método privado desde dentro de la clase
+
+obj = Ejemplo()
+print(obj.metodo_publico())  # Accesible desde cualquier parte
+print(obj._metodo_protegido())  # Se puede acceder, pero no se recomienda
+
+# print(obj.__metodo_privado())  # AttributeError
+print(obj.llamar_metodo_privado())  # Correcta forma de acceder al método privado
+```
+
+### **Modificación de Atributos Privados**
+En Python, aunque los atributos privados no pueden ser accedidos directamente, se pueden modificar usando métodos específicos (*getters* y *setters*).
+
+```python
+class Persona:
+    def __init__(self, nombre):
+        self.__nombre = nombre  # Atributo privado
+    
+    def obtener_nombre(self):  # Getter
+        return self.__nombre
+    
+    def cambiar_nombre(self, nuevo_nombre):  # Setter
+        self.__nombre = nuevo_nombre
+
+persona = Persona("Carlos")
+print(persona.obtener_nombre())  # Salida: Carlos
+persona.cambiar_nombre("Ana")
+print(persona.obtener_nombre())  # Salida: Ana
+```
+---
+
+
 
