@@ -1,6 +1,6 @@
 # Manual Avanzado de Python: Clases
 
-## Introducción a las Clases
+## 1. Introducción a las Clases
 
 En Python, las clases son una herramienta fundamental de la programación orientada a objetos (OOP). Estas actúan como plantillas que permiten crear estructuras organizadas para modelar datos y comportamientos en un solo lugar. Usar clases no solo mejora la reutilización del código, sino que también facilita el diseño de sistemas robustos, escalables y mantenibles. Una vez que comprendes el concepto de clases, puedes abordar problemas complejos dividiéndolos en componentes más manejables.
 
@@ -27,7 +27,7 @@ print(objeto.metodo())
 
 ---
 
-## Conceptos Fundamentales
+## 2. Conceptos Fundamentales
 
 ### Constructor (`__init__`)
 
@@ -128,7 +128,7 @@ print(resultado)  # 8
 
 ---
 
-## Herencia y Reutilización
+## 3. Herencia y Reutilización
 
 La **herencia** es un principio fundamental de la Programación Orientada a Objetos (OOP) que permite que una clase (*hija* o *subclase*) adquiera atributos y métodos de otra clase (*padre* o *superclase*). Esto fomenta la reutilización del código, evita la redundancia y facilita la mantenibilidad del software.
 
@@ -260,7 +260,7 @@ print(estudiante.presentacion())  # Salida: Me llamo Pedro y tengo 22 años. Est
 
 ---
 
-## Clases Abstractas y Métodos Abstractos
+## 4. Clases Abstractas y Métodos Abstractos
 
 En Programación Orientada a Objetos (OOP), una **clase base abstracta** es una clase que no puede ser instanciada directamente y sirve como plantilla para otras clases. Un **método abstracto** es un método definido en una clase base abstracta que debe ser implementado por las clases hijas.
 
@@ -307,7 +307,7 @@ Este enfoque es útil para representar dispositivos electrónicos que comparten 
 
 ---
 
-## Polimorfismo en Programación Orientada a Objetos
+## 5. Polimorfismo en Programación Orientada a Objetos
 
 El **polimorfismo** es un concepto clave en la Programación Orientada a Objetos (OOP) que permite utilizar un mismo método en diferentes clases, asegurando que cada clase implemente su propia versión del método. Esto favorece la flexibilidad y la escalabilidad del código, permitiendo que se interactúe con objetos de distintos tipos de manera uniforme.
 
@@ -379,15 +379,7 @@ for obj in objetos:
 - **Promueve la flexibilidad**, permitiendo que funciones y métodos trabajen con diferentes tipos de objetos sin preocuparse de su implementación específica.
 ---
 
-## Buenas Prácticas
-1. **Nombres descriptivos:** Usa nombres que reflejen propósito.
-2. **Evita dependencias circulares:** Asegura modularidad.
-3. **Usa pruebas unitarias:** Verifica comportamientos esperados.
-4. **Mantén la simplicidad:** No abuses de la herencia.
-
----
-
-## Encapsulación y Accesibilidad
+## 6. Encapsulación y Accesibilidad
 
 La **encapsulación** es un principio fundamental de la Programación Orientada a Objetos (OOP) que controla cómo se accede y modifica la información de un objeto. Esto ayuda a mantener la integridad y seguridad de los datos dentro de una clase.
 
@@ -465,6 +457,11 @@ persona.cambiar_nombre("Ana")
 print(persona.obtener_nombre())  # Salida: Ana
 ```
 ---
+## 7. Buenas Prácticas
+1. **Nombres descriptivos:** Usa nombres que reflejen propósito.
+2. **Evita dependencias circulares:** Asegura modularidad.
+3. **Usa pruebas unitarias:** Verifica comportamientos esperados.
+4. **Mantén la simplicidad:** No abuses de la herencia.
 
 
 
