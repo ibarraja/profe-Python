@@ -130,25 +130,133 @@ print(resultado)  # 8
 
 ## Herencia y Reutilización
 
-La **herencia** permite que una clase (*hija*) herede atributos y métodos de otra clase (*padre*). Es útil para extender funcionalidades sin duplicar código.
+La **herencia** es un principio fundamental de la Programación Orientada a Objetos (OOP) que permite que una clase (*hija* o *subclase*) adquiera atributos y métodos de otra clase (*padre* o *superclase*). Esto fomenta la reutilización del código, evita la redundancia y facilita la mantenibilidad del software.
 
 ### **Tipos de Herencia**
-- **Simple**: Una clase hereda de otra.
-- **Múltiple**: Una clase hereda de varias clases.
 
-#### **Ejemplo de Herencia Simple**
+Existen varios tipos de herencia en OOP:
+
+1. **Herencia Simple**: Una clase hija hereda de una sola clase padre.
+2. **Herencia Múltiple**: Una clase hija hereda de múltiples clases padres.
+3. **Herencia Multinivel**: Una clase hija hereda de otra clase hija, formando una cadena de herencia.
+4. **Herencia Jerárquica**: Varias clases hijas heredan de una misma clase padre.
+5. **Herencia Híbrida**: Combinación de dos o más tipos de herencia anteriores.
+
+### **Ejemplo de Herencia Simple**
 ```python
 class Vehiculo:
     def __init__(self, marca):
         self.marca = marca
 
-class Coche(Vehiculo):
     def descripcion(self):
-        return f"Coche de marca {self.marca}"
+        return f"Vehículo de marca {self.marca}"
 
-coche = Coche("Toyota")
-print(coche.descripcion())  # Salida: Coche de marca Toyota
+class Coche(Vehiculo):
+    def __init__(self, marca, modelo):
+        super().__init__(marca)  # Llamamos al constructor de la clase padre
+        self.modelo = modelo
+
+    def descripcion(self):
+        return f"Coche {self.modelo} de marca {self.marca}"
+
+coche = Coche("Toyota", "Corolla")
+print(coche.descripcion())  # Salida: Coche Corolla de marca Toyota
 ```
+
+### **Ejemplo de Herencia Múltiple**
+```python
+class Motor:
+    def tipo_motor(self):
+        return "Motor de combustión interna"
+
+class Chasis:
+    def tipo_chasis(self):
+        return "Chasis monocasco"
+
+class Automovil(Motor, Chasis):
+    def descripcion(self):
+        return f"Automóvil con {self.tipo_motor()} y {self.tipo_chasis()}"
+
+auto = Automovil()
+print(auto.descripcion())  # Salida: Automóvil con Motor de combustión interna y Chasis monocasco
+```
+
+### **Ejemplo de Herencia Multinivel**
+```python
+class Animal:
+    def sonido(self):
+        return "Sonido genérico"
+
+class Mamifero(Animal):
+    def caracteristica(self):
+        return "Es un mamífero"
+
+class Perro(Mamifero):
+    def sonido(self):
+        return "Ladrido"
+
+perro = Perro()
+print(perro.sonido())  # Salida: Ladrido
+print(perro.caracteristica())  # Salida: Es un mamífero
+```
+
+### **Ejemplo de Uso de `super()` en la Herencia**
+
+El método `super()` se usa para llamar a métodos de la clase padre dentro de la clase hija. Esto permite extender el comportamiento de la superclase sin necesidad de reescribir código.
+
+#### **Sin usar `super()`**
+```python
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def presentacion(self):
+        return f"Me llamo {self.nombre} y tengo {self.edad} años."
+
+class Estudiante(Persona):
+    def __init__(self, nombre, edad, carrera):
+        self.nombre = nombre  # Se repite la asignación de atributos de la clase padre
+        self.edad = edad
+        self.carrera = carrera
+
+    def presentacion(self):
+        return f"Me llamo {self.nombre}, tengo {self.edad} años y estudio {self.carrera}."
+
+estudiante = Estudiante("Pedro", 22, "Ingeniería Informática")
+print(estudiante.presentacion())
+```
+
+#### **Usando `super()`**
+```python
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def presentacion(self):
+        return f"Me llamo {self.nombre} y tengo {self.edad} años."
+
+class Estudiante(Persona):
+    def __init__(self, nombre, edad, carrera):
+        super().__init__(nombre, edad)  # Llamamos al constructor de la clase padre
+        self.carrera = carrera
+
+    def presentacion(self):
+        return f"{super().presentacion()} Estudio {self.carrera}."
+
+estudiante = Estudiante("Pedro", 22, "Ingeniería Informática")
+print(estudiante.presentacion())  # Salida: Me llamo Pedro y tengo 22 años. Estudio Ingeniería Informática.
+```
+
+### **Diferencias entre ambas versiones**
+1. **Sin `super()`**:
+   - Se repiten los atributos `nombre` y `edad`, lo que genera duplicación de código.
+   - Es menos flexible si la clase padre cambia, ya que habría que modificar la clase hija manualmente.
+
+2. **Con `super()`**:
+   - Se aprovecha la inicialización de la clase padre, evitando redundancias.
+   - Si la clase padre cambia, la clase hija seguirá funcionando correctamente sin modificaciones adicionales.
 
 ---
 
