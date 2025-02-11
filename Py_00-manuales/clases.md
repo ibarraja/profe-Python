@@ -260,31 +260,112 @@ print(estudiante.presentacion())  # Salida: Me llamo Pedro y tengo 22 años. Est
 
 ---
 
-## 4. Clases Abstractas y Métodos Abstractos
+## 4. Tipos de Métodos
 
+### 📌 4.1. Métodos de Instancia
+
+#### ✔️ Definición
+Los **métodos de instancia** operan sobre una **instancia específica** de la clase. Pueden acceder y modificar los atributos de la instancia.
+
+#### ✔️ Características:
+- Siempre reciben `self` como primer parámetro.
+- Pueden acceder y modificar atributos de instancia.
+- Pueden llamar a otros métodos de la misma instancia.
+
+#### ✔️ Ejemplo:
+```python
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def saludar(self):
+        return f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años."
+
+persona1 = Persona("Ana", 25)
+print(persona1.saludar())  # "Hola, mi nombre es Ana y tengo 25 años."
+```
+
+
+### 📌 4.2. Métodos de Clase (`@classmethod`)
+
+#### ✔️ Definición
+Los **métodos de clase** operan sobre la **clase en sí misma**, en lugar de una instancia.
+
+#### ✔️ Características:
+- Se definen con `@classmethod`.
+- Reciben `cls` como primer parámetro en lugar de `self`.
+- Pueden modificar atributos de **clase**, pero no de instancia.
+- Se pueden llamar desde la clase o desde una instancia.
+
+#### ✔️ Ejemplo:
+```python
+class Coche:
+    cantidad_coches = 0
+
+    def __init__(self, marca):
+        self.marca = marca
+        Coche.cantidad_coches += 1
+
+    @classmethod
+    def total_coches(cls):
+        return f"Se han creado {cls.cantidad_coches} coches."
+
+c1 = Coche("Toyota")
+c2 = Coche("Ford")
+print(Coche.total_coches())  # "Se han creado 2 coches."
+```
+
+---
+
+### 📌 4.3. Métodos Estáticos (`@staticmethod`)
+
+#### ✔️ Definición
+Los **métodos estáticos** son **independientes** de la clase y de las instancias. No pueden modificar ni acceder a atributos de instancia o de clase.
+
+#### ✔️ Características:
+- Se definen con `@staticmethod`.
+- No reciben `self` ni `cls`.
+- Funcionan como funciones normales, pero se organizan dentro de la clase.
+
+#### ✔️ Ejemplo:
+```python
+class Utilidades:
+    @staticmethod
+    def es_par(numero):
+        return numero % 2 == 0
+
+print(Utilidades.es_par(10))  # True
+print(Utilidades.es_par(7))   # False
+```
+
+---
+
+### 📌 4.4. Métodos y Clases Abstractos
+
+#### ✔️ Definición
 En Programación Orientada a Objetos (OOP), una **clase base abstracta** es una clase que no puede ser instanciada directamente y sirve como plantilla para otras clases. Un **método abstracto** es un método definido en una clase base abstracta que debe ser implementado por las clases hijas.
 
 Python proporciona el módulo `abc` (**Abstract Base Class**) para definir clases abstractas y métodos abstractos.
 
-### **Ejemplo con Clases Abstractas**
+#### ✔️ Ejemplo con Clases Abstractas
 ```python
 from abc import ABC, abstractmethod
 
-class Dispositivo(ABC):  # Clase base abstracta
+class Dispositivo(ABC):
     def __init__(self, marca, modelo):
         self.marca = marca
         self.modelo = modelo
     
     @abstractmethod
     def encender(self):
-        """Método abstracto que deben implementar las clases derivadas."""
         pass
 
-class Telefono(Dispositivo):  # Clase derivada concreta
+class Telefono(Dispositivo):
     def encender(self):
         return f"El teléfono {self.marca} {self.modelo} se está encendiendo."
 
-class Portatil(Dispositivo):  # Otra clase derivada concreta
+class Portatil(Dispositivo):
     def encender(self):
         return f"El portátil {self.marca} {self.modelo} está arrancando el sistema."
 
@@ -298,7 +379,7 @@ for dispositivo in dispositivos:
     print(dispositivo.encender())
 ```
 
-### **Explicación**
+#### ✔️ Explicación
 1. Se define la clase abstracta `Dispositivo`, que hereda de `ABC` y tiene un método abstracto `encender()`.
 2. `Telefono` y `Portatil` heredan de `Dispositivo` y deben implementar `encender()`.
 3. Se crea una lista de dispositivos y se llama a `encender()` sin importar el tipo específico de objeto, demostrando **polimorfismo**.
