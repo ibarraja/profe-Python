@@ -80,7 +80,7 @@ def create_directory(file):
     '''
     import os
     if os.path.isfile(file):
-        answer = input('El fichero ' + file + ' ya existe. ¿Desea vaciarlo (S/N)? ')
+        answer = input('El fichero ' + file + ' ya existe. ¿Desea vaciarlo [S/N]? ')
         if answer == 'N': 
             return 'No se ha creado el fichero porque ya existe.\n'
     f = open(file, 'w')
