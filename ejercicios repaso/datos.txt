@@ -1,0 +1,6 @@
+ID,Nombre,Edad,Salario_por_hora
+1,Ana,25,30
+2,Carlos,30,45
+4,Ochoa,29,18
+5,Ferm�n Trujillo,58,35
+6,Julio,58,35
