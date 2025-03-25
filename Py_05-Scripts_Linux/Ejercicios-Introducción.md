@@ -24,11 +24,10 @@
 🛠 **Instrucciones**:
 1. Crea un script llamado `informacion_sistema.py`.
 2. Muestra:
-   - La fecha (`date`)
    - El usuario actual (`whoami`)
-   - Los usuarios conectados (`who`)
-3. Cada comando debe ejecutarse con `subprocess.run()` desde funciones distintas.
-4. Añade separación visual entre los resultados (por ejemplo, líneas con guiones o saltos de línea).
+   - La fecha (`date`)
+4. Cada comando debe ejecutarse con `subprocess.run()` desde funciones distintas.
+5. Añade separación visual entre los resultados (por ejemplo, líneas con guiones o saltos de línea).
 
 💻 **Salida esperada por consola**:
 ```
