@@ -65,13 +65,15 @@ if __name__ == "__main__":
    ```
    1) Mostrar la fecha
    2) Mostrar usuario actual
-   3) Añadir un usuario (sin contraseña). Para ello tenemos que ejecutar `adduser #####` al ejecutarlos nos pide una contraseña. Le damos a intro un par de veces.
+   3) Añadir un usuario (sin contraseña). 
    4) Mostrar calendario actual
-   5) Cambiar contraseña `passwd #####` luego en la terminal establecemos la contraseña que queramos.
+   5) Cambiar contraseña.
    6) Salir
    ```
-3. Usa un bucle para pedir al usuario una opción hasta que elija salir.
-4. Cada opción debe llamar a una función que ejecute el comando correspondiente.
+   - En añadir un usuario tenemos que ejecutar `adduser #####` al ejecutarlos nos pide una contraseña. Le damos a intro un par de veces.
+   - A la hora de camboar la contraseña usaremos `passwd #####`.
+4. Usa un bucle para pedir al usuario una opción hasta que elija salir.
+5. Cada opción debe llamar a una función que ejecute el comando correspondiente.
 
 ✔️ **Requisitos**:
 - Validar que la entrada del usuario sea un número entre 1 y 6.
