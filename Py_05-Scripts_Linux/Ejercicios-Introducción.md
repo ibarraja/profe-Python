@@ -65,9 +65,9 @@ if __name__ == "__main__":
    ```
    1) Mostrar la fecha
    2) Mostrar usuario actual
-   3) Mostrar usuarios conectados
+   3) Añadir un usuario (sin contraseña). Para ello tenemos que ejecutar `adduser #####` al ejecutarlos nos pide una contraseña. Le damos a intro un par de veces.
    4) Mostrar calendario actual
-   5) Cambiar contraseña
+   5) Cambiar contraseña `passwd #####` luego en la terminal establecemos la contraseña que queramos.
    6) Salir
    ```
 3. Usa un bucle para pedir al usuario una opción hasta que elija salir.
