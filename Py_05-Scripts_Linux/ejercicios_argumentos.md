@@ -1,11 +1,3 @@
-Buena observación, Javier. Es cierto que estos ejercicios son introductorios y pueden quedarse cortos para alumnos que ya dominan lo básico. Aquí te propongo **formas de complejizarlos**, manteniendo la misma base pero con giros que añaden lógica, validación, modularidad, gestión de errores o interacción con el sistema.
-
----
-
-## 🔧 Versiones más complejas de los Ejercicios 4 y 5
-
----
-
 ### 🔁 **Ejercicio 4 – Versión mejorada: Analizador de argumentos**
 
 📌 **Objetivo**: Detectar el tipo de cada argumento y analizar su contenido.
