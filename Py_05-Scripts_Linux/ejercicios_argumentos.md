@@ -49,7 +49,7 @@ $ python3 calendario_inteligente.py abril
 $ python3 calendario_inteligente.py --festivos 12 2025
 ```
 
-**Array Festivos:** Podéis usar este diccionario para poder localizar los festivos.
+**Array Festivos:** Podéis usar este diccionario para poder realizar el apartado de los festivos.
 ```py
 festivos = {
     1: [(1, "Año Nuevo"), (6, "Día de Reyes")],
