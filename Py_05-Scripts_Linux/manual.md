@@ -156,8 +156,6 @@ if len(sys.argv) != 3:
     sys.exit(1)
 ```
 
----
-
 ## 🔗 Ejemplo combinado: argumentos + comandos
 
 ```python
@@ -172,3 +170,61 @@ mes, anio = sys.argv[1], sys.argv[2]
 subprocess.run(["cal", mes, anio])
 ```
 
+---
+ 
+## 📂 Módulo `os`: Acceso al sistema de archivos
+
+### 📁 `os.listdir()` – Listar contenido de un directorio
+
+Devuelve una lista con los nombres de todos los elementos del directorio indicado:
+
+```python
+import os
+print(os.listdir("/home"))  # Muestra los ficheros de /home
+```
+
+Si no se indica una ruta, devuelve los elementos del directorio actual:
+
+```python
+os.listdir()  # Equivale a os.listdir(os.getcwd())
+```
+
+### ✅ Comprobar si es fichero o directorio
+
+```python
+os.path.isdir("ruta")    # True si es un directorio
+os.path.isfile("ruta")   # True si es un fichero ordinario
+```
+
+### 📌 Obtener el directorio actual
+
+```python
+os.getcwd()  # Devuelve la ruta completa del directorio desde el que se ejecuta el script
+```
+
+### 🧪 Combinando rutas
+
+Cuando trabajamos con rutas relativas, es buena práctica usar:
+
+```python
+os.path.join(directorio, nombre_archivo)
+```
+
+---
+
+## 🔗 Ejemplo: Clasificación de ficheros y directorios
+
+```python
+import os
+ruta = "/etc"
+for elemento in os.listdir(ruta):
+    ruta_completa = os.path.join(ruta, elemento)
+    if os.path.isdir(ruta_completa):
+        print(f"📁   {elemento}")
+    elif os.path.isfile(ruta_completa):
+        print(f"📄   {elemento}")
+```
+
+---
+
+Con estos elementos puedes desarrollar scripts que naveguen por directorios, muestren contenido clasificado y acepten rutas como argumentos. La práctica con `os` es esencial para la administración de sistemas, automatización y creación de herramientas personalizadas.
