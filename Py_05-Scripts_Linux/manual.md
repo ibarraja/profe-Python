@@ -2,6 +2,34 @@
 
 ---
 
+## 💻 Antes de comenzar: Configura tu entorno con Docker (opcional pero recomendable)
+
+Si quieres trabajar en un entorno limpio y controlado sin afectar tu sistema operativo, puedes usar Docker. A continuación te explico cómo montar uno:
+
+1. **Crea una carpeta en tu Escritorio** llamada, por ejemplo, `python-docker`.
+2. Dentro de esa carpeta, crea un archivo llamado `Dockerfile` con el siguiente contenido:
+
+```Dockerfile
+FROM python:3.10.2-alpine3.15
+RUN mkdir /python
+WORKDIR /python
+CMD ["tail", "-f", "/dev/null"]
+```
+
+3. Abre una terminal en esa carpeta y ejecuta este comando para construir la imagen:
+
+```bash
+docker build -t python-pruebas:0.1 .
+```
+
+Esto creará una imagen ligera de Python basada en Alpine Linux, con una carpeta `/python` lista para trabajar. Puedes usar esta imagen como entorno de pruebas ejecutando:
+
+Una vez tengamos la imagen creada, tendremos que montar el contenedor. Abrimos Docker Desktop y nos dirigimos a images. Ejecutamos la imagen recien creada y **muy** importante, tendremos que darle a Optinal Settings, donde tendremos que añadir un nombree descriptivo al Contendor y linkear la carpeta creada en el escritorio con la  de `/python`.
+
+👀¡Cuidado! Ten en cuenta que el sistema de naavegacion de windows son contrabarras: `\` y en Linux es la barra: `/`.
+
+---
+
 ## 🌟 Introducción
 
 Una de las grandes ventajas de Python es su capacidad para integrarse con el sistema operativo. En entornos **Linux**, es habitual automatizar tareas mediante **scripts**: pequeños programas que ejecutan comandos del sistema, analizan argumentos y generan salidas útiles. Para ello, los módulos más comunes son:
