@@ -1,8 +1,6 @@
-# 📘 Manual de Python: Uso de `subprocess` y `sys.argv` para crear scripts en Linux
+# 📘 Manual de Scripts Python en Linux: 
 
----
-
-## 💻 Antes de comenzar: Configura tu entorno con Docker (opcional pero recomendable)
+## 0. 💻 Antes de comenzar: Configura tu entorno con Docker (opcional pero recomendable)
 
 Si quieres trabajar en un entorno limpio y controlado sin afectar tu sistema operativo, puedes usar Docker. A continuación te explico cómo montar uno:
 
@@ -30,7 +28,7 @@ Una vez tengamos la imagen creada, tendremos que montar el contenedor. Abrimos D
 
 ---
 
-## 🌟 Introducción
+## 1. 🌟 Introducción
 
 Una de las grandes ventajas de Python es su capacidad para integrarse con el sistema operativo. En entornos **Linux**, es habitual automatizar tareas mediante **scripts**: pequeños programas que ejecutan comandos del sistema, analizan argumentos y generan salidas útiles. Para ello, los módulos más comunes son:
 
@@ -41,13 +39,12 @@ Este manual te guiará paso a paso en su uso, combinando teoría, ejemplos y bue
 
 ---
 
-## 🧰 Módulo `subprocess`: Ejecutar comandos del sistema
+## 2. 🧰 Módulo `subprocess`: Ejecutar comandos del sistema
 
 ### 🤔 ¿Qué es `subprocess`?
 
 Es un módulo de la biblioteca estándar de Python que permite **lanzar procesos del sistema operativo** (como `ls`, `ping`, `cal`, etc.). Es una alternativa moderna y segura a funciones antiguas como `os.system()`.
 
----
 
 ### ⚖️ `subprocess.run()`: la forma estándar de ejecutar comandos
 
@@ -66,7 +63,6 @@ Este comando ejecuta `ls -l` como si lo hiciéramos desde una terminal.
 - `stderr`: errores (si se captura).
 - `returncode`: código de salida (0 = éxito).
 
----
 
 ### ✅ Captura de salida:
 
@@ -75,7 +71,6 @@ resultado = subprocess.run(["date"], capture_output=True, text=True)
 print("Hoy es:", resultado.stdout)
 ```
 
----
 
 ### ⚠️ Control de errores:
 
@@ -85,7 +80,6 @@ if resultado.returncode != 0:
     print("Error:", resultado.stderr)
 ```
 
----
 
 ### 💡 Buenas prácticas:
 - Usa listas (`["ls", "-l"]`) en lugar de cadenas.
@@ -94,7 +88,51 @@ if resultado.returncode != 0:
 
 ---
 
-## 🧪 `subprocess.getoutput()`: forma rápida y directa
+## 3. 🔎 Recoger información de la ejecución de comandos (`subprocess.run`)
+
+Cuando ejecutamos un comando usando `subprocess.run()`, no solo se lanza el comando: también podemos **recoger datos** muy útiles del proceso.  
+Estos datos nos permiten **controlar errores**, **capturar resultados** o **saber si la ejecución fue correcta**.
+
+El objeto que devuelve `subprocess.run()` contiene:
+
+| Propiedad        | Significado                                                        |
+|------------------|---------------------------------------------------------------------|
+| `returncode`     | Código de salida del proceso. `0` indica éxito; otro número, error. |
+| `stdout`         | Salida estándar del comando (por ejemplo, el texto que muestra).    |
+| `stderr`         | Mensajes de error generados durante la ejecución.                   |
+| `args`           | Lista de argumentos ejecutados.                                     |
+
+### 📋 Ejemplo básico: capturar código de retorno
+
+```python
+import subprocess
+
+resultado = subprocess.run(["ls", "/ruta_inexistente"], capture_output=True, text=True)
+
+if resultado.returncode == 0:
+    print("Comando ejecutado correctamente")
+else:
+    print("Error:", resultado.stderr)
+```
+
+### 📋 Ejemplo básico: capturar salida estándar
+
+```python
+import subprocess
+
+resultado = subprocess.run(["date"], capture_output=True, text=True)
+print("Fecha actual:", resultado.stdout.strip())
+```
+
+✅ **Notas importantes:**
+- `capture_output=True` es necesario si quieres recoger `stdout` y `stderr` en variables.
+- `text=True` convierte la salida binaria en texto (string).
+- Siempre debes **comprobar `returncode`** si el comando puede fallar.
+- No todos los comandos llenan `stderr`: a veces los errores se imprimen también en `stdout`.
+
+---
+
+## 4. 🧪 `subprocess.getoutput()`: forma rápida y directa
 
 ### 🤔 ¿Qué es?
 
@@ -113,8 +151,6 @@ print("Usuario actual:", usuario)
 | Comandos simples             | Se necesitan errores (`stderr`)    |
 | Sin entradas del usuario     | Hay riesgo de inyección           |
 
----
-
 ### 📅 Ejemplo:
 
 ```python
@@ -123,7 +159,7 @@ print(getoutput("date"))
 
 ---
 
-## 🚫 Peligro real: inyección de comandos con `shell=True`
+## 5. 🚫 Peligro real: inyección de comandos con `shell=True`
 
 Usar `shell=True` **con entradas del usuario** puede ser peligroso:
 
@@ -150,7 +186,7 @@ echo Hola Javier && rm -rf ~
 
 ---
 
-## 💬 Módulo `sys.argv`: Argumentos desde la terminal
+## 6. 💬 Módulo `sys.argv`: Argumentos desde la terminal
 
 ### 🤔 ¿Qué es?
 
@@ -184,7 +220,7 @@ if len(sys.argv) != 3:
     sys.exit(1)
 ```
 
-## 🔗 Ejemplo combinado: argumentos + comandos
+### 🔗 Ejemplo combinado: argumentos + comandos
 
 ```python
 import sys
@@ -200,7 +236,7 @@ subprocess.run(["cal", mes, anio])
 
 ---
  
-## 📂 Módulo `os`: Acceso al sistema de archivos
+## 7. 📂 Módulo `os`: Acceso al sistema de archivos
 
 ### 📁 `os.listdir()` – Listar contenido de un directorio
 
@@ -238,9 +274,7 @@ Cuando trabajamos con rutas relativas, es buena práctica usar:
 os.path.join(directorio, nombre_archivo)
 ```
 
----
-
-## 🔗 Ejemplo: Clasificación de ficheros y directorios
+### 🔗 Ejemplo: Clasificación de ficheros y directorios
 
 ```python
 import os
