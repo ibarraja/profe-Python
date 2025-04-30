@@ -19,7 +19,7 @@ Desarrollar un script en Python que verifique qué direcciones IP en una subred 
      - Tres bloques numéricos separados por puntos (`.`).
      - Cada número debe estar entre `0` y `254`.
    - Para cada dirección IP de la subred (`192.168.1.1` hasta `192.168.1.254`):
-     - Ejecutar un `ping` enviando **un solo paquete** (`ping -c 1 <IP>`), con un tiempo de espera de 0.25 segundos.
+     - Ejecutar un `ping` enviando **un solo paquete** (`ping -c 1 -W 1 <IP>`), con un tiempo de espera de 0.25 segundos.
      - Capturar el resultado del `ping` (`capture_output=True`, `text=True`).
      - Mostrar:
        - **"La dirección \<IP\> está ocupada"** si el `ping` tiene éxito (`returncode == 0`).
