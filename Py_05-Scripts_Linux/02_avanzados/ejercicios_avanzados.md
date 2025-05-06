@@ -1,7 +1,3 @@
-No hay problema, Javier. Entiendo perfectamente, y más si estás preparando clase. Aquí tienes los **enunciados actualizados** de los ejercicios `e6.py` y `e7.py` con todas las mejoras que hemos ido incorporando:
-
----
-
 ## 📘 Ejercicio `e6.py` – Simulador de creación de usuarios en Alpine Docker
 
 ### 🎯 Objetivo:
