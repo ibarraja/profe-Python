@@ -82,7 +82,7 @@ Crear un script que lea el archivo `/etc/passwd` y **muestre solo los usuarios s
 
    * UID ≥ 1000
    * Distintos de `nobody`
-
+3. Modificar `/etc/passwd` para que todos los usuarios con uid >= 1001 y < 2000 que empiecen por la misma letra los agrupen en el mismo GID: 1001
 ---
 
 ### 📦 Salida esperada:
