@@ -108,3 +108,72 @@ Usuarios en el grupo (1002):
 * Usa `split(":")` para procesar las líneas.
 * Utiliza control de errores mínimo (evitar excepciones si el archivo no existe o una línea está mal formada).
 
+---
+
+## 📘 Ejercicio `e8.py` – Actualizar `/etc/group` a partir de `/etc/passwd`
+
+### 📎 Apéndice introductorio:
+
+Cambiar el GID en `/etc/passwd` **modifica la pertenencia principal del usuario**, pero **ese grupo no existe realmente** si no está definido en el archivo `/etc/group`. Por tanto, es necesario asegurarse de que cada GID asignado a un usuario tenga su correspondiente entrada en `/etc/group`, especialmente si se están simulando usuarios como parte de ejercicios en entornos como Docker.
+
+---
+
+### 🎯 Objetivo:
+
+Leer la información de los usuarios definidos en `/etc/passwd` y asegurarse de que **cada GID utilizado por un usuario tiene su correspondiente grupo en `/etc/group`**. Si no existe, se añadirá una entrada simulada para ese grupo, incluyendo los miembros asociados.
+
+---
+
+### 🛠 Instrucciones:
+
+1. El script debe llamarse `e8.py`.
+2. Leer el archivo `/etc/passwd` y construir un diccionario `{GID: [usuarios]}` (GID, en el diccionario, son las IDs identificativas de cada grupo) solo con:
+
+   * Usuarios con UID entre `1001` y `1999`.
+   * Excluir `nobody`, `root` u otros UID especiales.
+3. Leer `/etc/group` y almacenar los GIDs ya existentes.
+4. Para cada GID detectado en `/etc/passwd` pero **no presente en `/etc/group`**, generar una línea nueva con formato:
+
+```
+grupo<gid>:x:GID:usuario1,usuario2,...
+```
+
+5. Añadir esas líneas al final de `/etc/group`.
+
+---
+
+### ✅ Requisitos técnicos:
+
+* Validar que `/etc/group` existe antes de modificarlo.
+* Hacer una copia previa del archivo con `shutil.copy()` por seguridad.
+* Usar `try` / `except` para controlar errores.
+* Mantener los datos originales de `/etc/group` sin alterar.
+
+---
+
+### 📦 Ejemplo de salida final en `/etc/group`:
+
+Supongamos que en `/etc/passwd` tenemos:
+
+```
+javi:x:1001:1001::/home/javi:/bin/sh
+maria:x:1002:1002::/home/maria:/bin/sh
+juan:x:1003:1001::/home/juan:/bin/sh
+```
+
+Y que `/etc/group` no contiene los grupos `1001` ni `1002`. El script debe añadir:
+
+```
+grupo1001:x:1001:javi,juan
+grupo1002:x:1002:maria
+```
+
+---
+
+### 💡 Sugerencias:
+
+* Usa estructuras como diccionarios para agrupar usuarios por GID.
+* Al escribir en `/etc/group`, **usa `a` (append)** para no sobrescribir el archivo completo.
+* Reutiliza la lógica del ejercicio 7 si fuera necesario.
+
+
