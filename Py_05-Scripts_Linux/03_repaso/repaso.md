@@ -68,12 +68,14 @@ Según la opción seleccionada:
 $ python3 buscar_texto.py
 
 Introduce el término a buscar: error
-Introduce el directorio donde buscar: /var/log
+Introduce el directorio donde buscar: /etc
 
-El término 'error' se encontró en 3 archivos:
- - /var/log/syslog
- - /var/log/auth.log
- - /var/log/dmesg
+El término 'root' se encontró en 7 archivos:
+ - /etc/ssl1.1
+ - /etc/passwd
+ - /etc/shadow
+ - /etc/services
+ - ...
 Número total de ocurrencias encontradas: 17
 
 ¿Qué deseas hacer?
