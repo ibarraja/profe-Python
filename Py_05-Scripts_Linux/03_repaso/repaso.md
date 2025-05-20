@@ -27,7 +27,7 @@ Desarrolla un script llamado `buscar_texto.py` que cumpla lo siguiente:
 ### 2. Ejecución de la búsqueda
 
 * Ejecutar `grep -r <termino> <directorio>` usando `subprocess.run()` con `capture_output=True` y `text=True`.
-* Procesar la salida según el código de retorno:
+* Procesar la salida según el código de retorno (`returncode`):
 
   | Código de retorno                                                     | Significado                                       | Acción del script                                                               |
   | --------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------- |
