@@ -32,9 +32,9 @@ Desarrolla un script llamado `buscar_texto.py` que cumpla lo siguiente:
   | Código de retorno                                                     | Significado                                       | Acción del script                                                               |
   | --------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------- |
   | 0                                                                     | Coincidencias encontradas                         | Mostrar archivos únicos donde aparece el término y número total de ocurrencias. |
-  | 1                                                                     | No se encontraron coincidencias                   | Mostrar mensaje:  `"No se encontraron coincidencias para '<termino>' en <directorio>."`                                                              |
-  | |                                                   |                                                                                 |
-  | 2                                                                     | Error en ejecución (p. ej., directorio no existe) | Mostrar mensaje de error con detalle técnico y pedir acción.                    |
+  | 1                                                                     | No se encontraron coincidencias                   | Mostrar mensaje:  `"No se encontraron coincidencias para '<termino>' en <directorio>."`|
+
+  | 2                                                                     | Error en ejecución (p. ej., directorio no existe) | Mostrar mensaje de error con detalle técnico y pedir acción.  |
 
 ### 3. Menú interactivo tras cada búsqueda
 
