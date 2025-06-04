@@ -1,0 +1,182 @@
+
+
+#################################################################################################
+-----------------------------------------   Ejercicio 1 -----------------------------------------
+#################################################################################################
+
+class Conversiones: 
+   def convertir_decimal_to_str_binaria(num:int) -> str:
+      """
+      Comprueba si `num` está dentro del rango [0:32]
+      Obtiene una cadena de texto con tantos '1' como se indican. 
+      Se separa por '.' cada vez que se completa un octeto, excepto el último.
+
+      Devuelve la cadena de texto 'mascara_binario' o mensaje de error.
+      """
+      pass
+
+
+   def convertir_str_binaria_to_str_decimal(mascara_binario:str) -> str:
+      """
+      Convierte los octetos de una str en numeros decimales.
+
+      Devuelve cadena de texto: 'mascara_decimal'.
+      """
+      pass
+
+   def imprimir(num, mascara_binario, mascara_decimal) -> str:
+      """
+      Imprime el siguiente formato:
+      num | mascara_binario | mascara_decimal
+      """
+      pass
+
+#################################################################################################
+-----------------------------------------   Ejercicio 2 -----------------------------------------
+#################################################################################################
+
+   def obtener_ip_prefijo() -> (str, int): 
+      """
+      Devuelve (IP, prefijo) a partir de `ip addr` (linea donde aparece `inet` y `scope global`).
+      """...
+   
+   def obtener_mascara_desde_ip_prefijo(prefijo: int) -> str: 
+      """Convierte un prefijo en una máscara punteada. haciendo uso de un diccionario"""
+      # En esta función puedes resolverlo tanto haciendo uso del siguiente diccionario:
+      tabla = {8:"255.0.0.0",
+               16:"255.255.0.0",
+               24:"255.255.255.0",
+               32:"255.255.255.255"
+              }
+      # Como importando la función (si la has creado) del ejercicio 1 de este examen
+      # Hacerlo importando tendra un extra de puntuación
+      ...
+
+   def get_broadcast() -> str: 
+      """Extrae la dirección de broadcast de la misma línea de ip y máscara (cadena de texto posterior a `brd`)"""
+      ...
+   
+   def get_gateway() -> str: 
+      """Extrae la puerta de enlace con `ip route` (ip de la primera linea)."""
+      ...
+   
+   def get_dns_servers() -> List[str]: 
+      """Lee /etc/resolv.conf y extrae todas las IP tras 'nameserver'."""
+      ...
+
+   def main() -> None: ...
+
+#################################################################################################
+-----------------------------------------   Ejercicio 3 -----------------------------------------
+#################################################################################################
+from typing import Tuple
+
+
+CANTIDAD_MAXIMA_INFORMES = 50
+ERROR_RECUPERANDO_ARGUMENTOS = 1
+ERROR_GENERANDO_FICHEROS = 2
+
+def main():
+    """
+    Qué hace: Controla la ejecución principal del script.
+    - Limpia la pantalla.
+    - Extrae argumentos del script.
+    - Llama a la función que genera los ficheros.
+
+    Qué devuelve: Nada (es el punto de entrada del script).
+    """
+    pass
+
+
+def limpiar_pantalla():
+   """
+   Qué hace: Ejecuta el comando 'clear' para limpiar la pantalla del terminal.
+   Qué devuelve: Nada.
+   """
+   pass
+
+def extraer_nombre_cantidad_informes(argumentos) -> Tuple[str,int]:
+   """
+   Qué hace: Valida y extrae los argumentos pasados al script.
+   - El primero es el nombre base del fichero.
+   - El segundo es la cantidad de informes a generar (máximo permitido).
+
+   Qué devuelve: Una tupla con (nombre, cantidad).
+   """
+   pass
+
+def generar_ficheros_informes(nombre_informe, cantidad_informes) -> None:
+   """
+   Qué hace: Genera ficheros de informe solo en días laborables, a partir de mañana.
+   Qué devuelve: Nada. Crea archivos en el sistema.
+   """
+   dia_actual = obtener_dia_actual()
+   mes_actual = obtener_mes_actual()
+   año_actual = obtener_año_actual()
+
+   # Bucle que copia los archivos.
+   ...
+
+def calcular_fecha_futura(dia_actual: int, mes_actual: int, año_actual: int, dias_pasados: int) -> str:
+   """
+   Qué hace: Calcula la fecha futura en formato AAAA-MM-DD, ajustando el cambio de mes.
+   Qué devuelve: Una cadena con la fecha futura.
+   """
+   # Si al no nos pasamos del mes de junio
+   if dia_actual + dias_pasados <= 30:
+      dia_fichero = ...
+      mes_fichero = ...
+   else:   
+      dia_fichero = (dia_actual + dias_pasados) - 30
+      mes_fichero = mes_actual + 1
+
+   # Si el dia_actual es menor de 10 añadir un '0' delante al dia_fichero
+
+def copiar_fichero(nombre):
+   """
+   Qué hace: Crea un nuevo fichero copiando 'plantilla.docx' con el nombre especificado.
+   Qué devuelve: Nada. Lanza excepción si falla.
+   """
+   pass
+
+def obtener_fecha() -> str:
+   """
+   Qué hace: Obtiene la fecha actual completa (AAAA-MM-DD).
+   Qué devuelve: Cadena con la fecha.
+   """
+   pass
+
+def obtener_dia_actual() -> int:
+   """
+   Qué hace: Obtiene el día actual del mes.
+   Qué devuelve: Entero entre 1 y 30.
+   """
+   pass
+
+def obtener_mes_actual() -> int:
+   """
+   Qué hace: Obtiene el mes actual.
+   Qué devuelve: Entero entre 1 y 12.
+   """
+   pass
+
+def obtener_año_actual() -> int:
+   """
+   Qué hace: Obtiene el año actual.
+   Qué devuelve: Año actual como entero (ej: 2025).
+   """
+   pass
+
+def obtener_dia_semana_letra(fecha) -> str:
+   """
+   Qué hace: Obtiene el nombre del día de la semana (lunes, martes, ...).
+   Qué devuelve: Cadena con el nombre del día.
+   """
+   pass
+
+def es_dia_laborable(fecha) -> bool:
+   """
+   Qué hace: Determina si una fecha es laborable (lunes a viernes).
+   Qué devuelve: True si lo es, False si es fin de semana.
+   """
+   pass
